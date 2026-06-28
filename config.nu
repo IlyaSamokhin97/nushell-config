@@ -17,13 +17,19 @@
 # options using:
 #     config nu --doc | nu-highlight | less -R
 
+# theme
 source ~/nu_scripts/themes/nu-themes/bright.nu
 
+# prompt
 source ~/nu_scripts/modules/prompt/oh-my-v2.nu
 $env.PROMPT_COMMAND = { (get_prompt 24bit).left_prompt }
 $env.PROMPT_COMMAND_RIGHT = { (get_prompt 24bit).right_prompt }
 $env.PROMPT_INDICATOR = " "
- 
+
+# env
+$env.PATH ++= ["~/.ghcup/bin"]
+
+# aliases
 def --env y [...args] {
 	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
 	^yazi ...$args --cwd-file $tmp
