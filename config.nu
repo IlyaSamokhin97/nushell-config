@@ -28,9 +28,21 @@ $env.PROMPT_INDICATOR = " "
 
 # env
 $env.PATH ++= ["~/.ghcup/bin"]
-$env.LOCALSEND = ("~/Downloads/LocalSend/" | path expand)
+$env.LOCALSEND = (
+	if $nu.os-info.name == "windows" {
+		("D:/Downloads/LocalSend/" | path expand)
+	} else {
+		("~/Downloads/LocalSend/" | path expand)
+	}
+)
 $env.TRACKEDGG_EXPORT = ([$env.LOCALSEND "tracked_export_2026-07-12.zip"] | path join)
-$env.TRACKEDGG_VEGALITE = ("~/Documents/tracked-gg-graph.html" | path expand)
+$env.TRACKEDGG_VEGALITE = (
+	if $nu.os-info.name == "windows" {
+		"D:/My/Documents/tracked-gg-graph.html"
+	} else {
+		("~/Documents/tracked-gg-graph.html" | path expand)
+	}
+)
 
 # aliases
 def --env y [...args] {
