@@ -44,6 +44,9 @@ $env.TRACKEDGG_VEGALITE = (
 	}
 )
 
+# env.config
+$env.config.use_kitty_protocol = true
+
 # aliases
 def --env y [...args] {
 	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
