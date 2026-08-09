@@ -27,7 +27,10 @@ $env.PROMPT_COMMAND_RIGHT = { (get_prompt 24bit).right_prompt }
 $env.PROMPT_INDICATOR = " "
 
 # env
-$env.PATH ++= ["~/.ghcup/bin"]
+$env.PATH ++= [
+	"~/.cargo/bin"
+	"~/.ghcup/bin"
+]
 $env.LOCALSEND = (
 	if $nu.os-info.name == "windows" {
 		("D:/Downloads/LocalSend/" | path expand)
