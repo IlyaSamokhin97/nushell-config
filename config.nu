@@ -26,10 +26,14 @@ $env.PROMPT_COMMAND = { (get_prompt 24bit).left_prompt }
 $env.PROMPT_COMMAND_RIGHT = { (get_prompt 24bit).right_prompt }
 $env.PROMPT_INDICATOR = " "
 
+# config
+$env.config.use_kitty_protocol = true
+
 # env
 $env.PATH ++= [
 	"~/.cargo/bin"
 	"~/.ghcup/bin"
+	"~/.rocup/bin"
 ]
 $env.LOCALSEND = (
 	if $nu.os-info.name == "windows" {
@@ -38,17 +42,6 @@ $env.LOCALSEND = (
 		("~/Downloads/LocalSend/" | path expand)
 	}
 )
-$env.TRACKEDGG_EXPORT = ([$env.LOCALSEND "tracked_export_2026-07-12.zip"] | path join)
-$env.TRACKEDGG_VEGALITE = (
-	if $nu.os-info.name == "windows" {
-		"D:/My/Documents/tracked-gg-graph.html"
-	} else {
-		("~/Documents/tracked-gg-graph.html" | path expand)
-	}
-)
-
-# env.config
-$env.config.use_kitty_protocol = true
 
 # aliases
 def --env y [...args] {
@@ -60,3 +53,5 @@ def --env y [...args] {
 	}
 	rm -fp $tmp
 }
+
+alias zed = zeditor
